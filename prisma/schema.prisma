@@ -1,0 +1,15 @@
+datasource db {
+  provider = "mysql"  // 这里可以是 mysql, postgresql, sqlite, sqlserver 等
+  url      = env("DATABASE_URL")  // 从 .env 文件中读取数据库连接字符串
+}
+
+// 生成 Prisma 客户端
+generator client {
+  provider = "prisma-client-js"  // Prisma 客户端生成器
+}
+
+model JiraTask {
+  id        Int    @id @default(autoincrement()) // 自动生成的主键
+  JiraCode  String
+  Desc      String
+}

@@ -1,103 +1,70 @@
-import Image from "next/image";
+// src/app/page.tsx
+"use client";
+
+import { useState } from "react";
+import { Input } from "@/components/ui/input"; // 假设你用的是 shadcn/ui
+import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+
+type Tool = {
+  name: string;
+  description: string;
+  href: string;
+};
+
+const tools: Tool[] = [
+  { name: "SQL IN 语句生成器", description: "将每行数据转换为 SQL 的 IN 子句格式", href: "/tools/sql-in-generator" },
+  { name: "二维码生成", description: "生成自定义二维码", href: "/tools/qrcode-generator" },
+  { name: "时间戳转换", description: "时间戳与时间互相转换", href: "/tools/timestamp-converter" },
+  { name: "Base64 编解码", description: "Base64 编码和解码", href: "/tools/base64" },
+  { name: "正则测试", description: "在线测试正则表达式", href: "/tools/regex-tester" },
+  // 你可以继续添加更多工具项
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [query, setQuery] = useState("");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+  const filteredTools = tools.filter((tool) =>
+    tool.name.toLowerCase().includes(query.toLowerCase()) ||
+    tool.description.toLowerCase().includes(query.toLowerCase())
+  );
+
+  return (
+    <main className="p-6 max-w-6xl mx-auto">
+      <h1 className="text-4xl font-bold mb-2 text-center">工具导航</h1>
+      <p className="text-gray-500 text-center mb-6">快速访问开发常用工具</p>
+
+      <div className="mb-8">
+        <Input
+          placeholder="搜索工具..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="max-w-md mx-auto"
+        />
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {filteredTools.map((tool, index) => (
+          <motion.a
+            key={tool.href}
+            href={tool.href}
             target="_blank"
-            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="block"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <Card className="h-full transition-shadow hover:shadow-lg">
+              <CardContent className="p-4">
+                <h2 className="text-xl font-semibold mb-1">{tool.name}</h2>
+                <p className="text-sm text-gray-500">{tool.description}</p>
+              </CardContent>
+            </Card>
+          </motion.a>
+        ))}
+        {filteredTools.length === 0 && (
+          <div className="text-center col-span-full text-gray-500">没有找到相关工具</div>
+        )}
+      </div>
+    </main>
   );
 }
