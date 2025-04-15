@@ -1,13 +1,12 @@
 'use client';
-
-import { trpc } from '@/lib/trpc/client';
+import { trpc } from '@/app/_trpc/client';
 
 export default function Home() {
-  const greeting = trpc.greet.useQuery({ name: 'tRPC user' });
+  const getTodos=trpc.getTodos.useQuery();
 
   return (
     <main>
-      <h1>{greeting.data?.greeting ?? 'Loading...'}</h1>
+      <h1>{JSON.stringify(getTodos.data)}</h1>
     </main>
   );
 }
