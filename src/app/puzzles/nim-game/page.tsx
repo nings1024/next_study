@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function NimGamePage() {
   const [piles, setPiles] = useState<string>(""); // 用户输入的堆数
   const [moveResult, setMoveResult] = useState<string>(""); // 用于展示最优取法
-  const [isWinning, setIsWinning] = useState<boolean | null>(null); // 用于判断能否获胜
+  const [isWinning] = useState<boolean | null>(null); // 用于判断能否获胜
 
   // 解析输入的堆数并计算
   const handleCalculateMove = () => {
@@ -35,19 +35,6 @@ export default function NimGamePage() {
         }
       }
     }
-  };
-
-  const handleCheckWinning = () => {
-    const pileArray = piles.split(" ").map((num) => parseInt(num.trim(), 10));
-
-    if (pileArray.some((num) => isNaN(num))) {
-      setMoveResult("请输入有效的堆数，数字之间用逗号分隔。");
-      return;
-    }
-
-    const xorSum = pileArray.reduce((acc, pile) => acc ^ pile, 0);
-    setIsWinning(xorSum !== 0);
-    setMoveResult("");
   };
 
   return (
