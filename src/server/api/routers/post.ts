@@ -1,5 +1,5 @@
 import { publicProcedure, router } from "../trpc";
-import { prisma } from "@/lib/prisma"
+// import { prisma } from "@/lib/prisma"
 import { z } from "zod";
 
 export const postRouter = router({
@@ -11,24 +11,9 @@ export const postRouter = router({
       })
     )
     .query(async ( input) => {
-      console.log('------------------------')
-      console.log(input);
-      console.log('------------------------')
-      const { page = 1, pageSize = 10 } = {};
-      console.log(page, pageSize);
-      const tasks = await prisma.jiraTask.findMany({
-        skip: (page - 1) * pageSize,
-        take: pageSize,
-      });
-      
-      console.log(tasks);
+      console.log(input)
       return {
-        data: tasks,
-        pagination: {
-          currentPage: page,
-          pageSize,
-          total: await prisma.jiraTask.count()
-        }
+        data: "Hello World",
       };
     }),
     test:publicProcedure.query(async (p)=>{
