@@ -15,9 +15,9 @@ type Tool = {
 
 const tools: Tool[] = [
   { name: "SQL IN 语句生成器", description: "将每行数据转换为 SQL 的 IN 子句格式", href: "/tools/sql-in-generator", type: "tool" },
-  { name: "二维码生成", description: "生成自定义二维码", href: "/tools/qrcode-generator", type: "tool" },
-  { name: "时间戳转换", description: "时间戳与时间互相转换", href: "/tools/timestamp-converter", type: "tool" },
-  { name: "Base64 编解码", description: "Base64 编码和解码", href: "/tools/base64", type: "tool" },
+  { name: "进制转换", description: "进制转换", href: "/tools/base-converter", type: "tool" },
+  { name: "斜杠转换", description: "斜杠转换", href: "/tools/slash-converter", type: "tool" },
+  { name: "时间戳转换", description: "时间戳转换", href: "/tools/timestamp-extractor", type: "tool" },
   { name: "正则测试", description: "在线测试正则表达式", href: "/tools/regex-tester", type: "tool" },
 ];
 
