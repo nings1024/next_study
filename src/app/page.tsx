@@ -14,6 +14,9 @@ export default function Home() {
         <Link href="/puzzles" className="text-purple-500 hover:underline text-lg">
           🧠 逻辑谜题
         </Link>
+        <Link href="/puzzles" className="text-purple-500 hover:underline text-lg">
+          🕹️ 小游戏
+        </Link>
       </div>
     </main>
   );
