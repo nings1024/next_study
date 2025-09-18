@@ -48,7 +48,7 @@ export default function RegexTester() {
       }
 
       return parts.length > 0 ? parts : text;
-    } catch (error) {
+    } catch  {
       return text;
     }
   }, [regex, text]);
@@ -60,7 +60,7 @@ export default function RegexTester() {
       try {
         new RegExp(value);
         setIsValidRegex(true);
-      } catch (error) {
+      } catch {
         setIsValidRegex(false);
       }
     } else {
