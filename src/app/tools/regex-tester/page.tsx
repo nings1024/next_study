@@ -17,7 +17,7 @@ export default function RegexTester() {
 
     try {
       const regexObj = new RegExp(regex, "g");
-      const parts: (string | JSX.Element)[] = [];
+      const parts: (string | any)[] = [];
       let lastIndex = 0;
       let match: RegExpExecArray | null;
 
