@@ -66,7 +66,7 @@ export default function RegexTester() {
         setIsValidRegex(false);
       }
     } else {
-      setIsValidValid(true);
+      setIsValidRegex(true);
     }
   };
 
