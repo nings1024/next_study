@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ReactNode } from 'react';
+
 
 export default function RegexTester() {
   const [regex, setRegex] = useState<string>("");
@@ -17,7 +19,7 @@ export default function RegexTester() {
 
     try {
       const regexObj = new RegExp(regex, "g");
-      const parts: (string | any)[] = [];
+      const parts: (string | ReactNode)[] = [];
       let lastIndex = 0;
       let match: RegExpExecArray | null;
 
