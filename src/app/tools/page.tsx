@@ -12,13 +12,13 @@ type Tool = {
   href: string;
   type?: "tool" | "puzzle";
 };
-
 const tools: Tool[] = [
   { name: "SQL IN 语句生成器", description: "将每行数据转换为 SQL 的 IN 子句格式", href: "/tools/sql-in-generator", type: "tool" },
   { name: "进制转换", description: "进制转换", href: "/tools/base-converter", type: "tool" },
   { name: "斜杠转换", description: "斜杠转换", href: "/tools/slash-converter", type: "tool" },
   { name: "时间戳转换", description: "时间戳转换", href: "/tools/timestamp-extractor", type: "tool" },
   { name: "正则测试", description: "在线测试正则表达式", href: "/tools/regex-tester", type: "tool" },
+  { name: "图片批量处理", description: "批量裁剪、缩放、拼接图片", href: "/tools/image-batch-processor", type: "tool" },
 ];
 
 
